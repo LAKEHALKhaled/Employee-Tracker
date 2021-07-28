@@ -1,3 +1,5 @@
+       USE employees;
+       
         INSERT INTO department (department_name)
 VALUES ("Web Development"),
        ("Data Science"),
@@ -6,20 +8,22 @@ VALUES ("Web Development"),
        ("History of the Internet"),
        ("Machine Learning"),
        ("Cloud Development");
-        INSERT INTO role (title, department_id, salary)
-VALUES ("Manager", 3, 96000),
-       ("Engineer", 2, 100123),
-       ("Mathematician", 5, 83125),
-       ("Historian", 6, 94012),
-       ("Mechanic", 7, 66654),
-       ("Salesman", 8, 12125 );
+        INSERT INTO role (title, salary, department_id)
+VALUES ("Manager", 96000,3 ),
+       ("Engineer", 100123,2 ),
+       ("Historian", 94012,6 ),
+       ("Mechanic", 66654,7 ),
+       ("Salesman", 12125,8  );
        INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("James", "Allen", 6, 4),
-       ("Bossy", "McCharge", 1, null),
-       ("Matthew", "MarcLuke", 3, 2),
-       ("Marry", "Smalmen", 6, 5),
-       ("Amadou", "Babou", 5, 2),
-       ("Sliman", "Morabito", 2, 2);
+VALUES
+    ('John', 'Doe', 1, NULL),
+    ('Mike', 'Chan', 2, 1),
+    ('Ashley', 'Rodriguez', 3, NULL),
+    ('Kevin', 'Tupik', 4, 3),
+    ('Kunal', 'Singh', 5, NULL),
+    ('Malia', 'Brown', 6, 5),
+    ('Sarah', 'Lourd', 7, NULL),
+    ('Tom', 'Allen', 8, 7);
 
 
 
