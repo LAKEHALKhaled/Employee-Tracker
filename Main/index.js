@@ -18,22 +18,7 @@ const questionAll = [ {
     message: "What's the name of the department you like to add?"
 }
 ]
-const questionRole = [ {
-    type:'input',
-    name: 'title',
-    message: "What's the name of the role?"
-},
-{
-    type:'input',
-    name: 'salary',
-    message: "What's the salary for the role?"
-},
-{
-    type:'input',
-    name: 'department_id',
-    message: "What's the department for the role?"
-}
-]
+
 const questionEmployee = [ {
     type:'input',
     name: 'firstName',
@@ -125,12 +110,37 @@ const  WhatDepartement = () => {
          db.addDepartment(answer).then(()=> viewAllDepartments())
     }) 
 }
-const  WhatRole = () => {
-    inquirer.prompt(questionRole).then( (answer) => {
-    console.log(answer);
-     db.addRole(answer).then(()=> viewAllRoles())
-     
-    }) 
+const  WhatRole = async () => {
+    let department = await db.viewAllDepartments();
+    console.log(department);
+    var departmentChoices = department.map((EntreDep)=>{
+        return {
+            name : EntreDep.department_name,
+            value : EntreDep.id
+        }
+    })
+    let answers = await inquirer.prompt(
+        [ {
+            type:'input',
+            name: 'title',
+            message: "What's the name of the role?"
+        },
+        {
+            type:'input',
+            name: 'salary',
+            message: "What's the salary for the role?"
+        },
+        {
+            type:'list',
+            name: 'department_id',
+            message: "What's the department for the role?",
+            choices: departmentChoices
+        }
+        ]
+    )
+    console.log(answers);
+      await db.addRole(answers) 
+      viewAllRoles()
 }
 const  WhatEmployee = () => {
     inquirer.prompt(questionEmployee).then( (answer) => {
@@ -139,3 +149,7 @@ const  WhatEmployee = () => {
 }
 
 init();
+
+
+
+   

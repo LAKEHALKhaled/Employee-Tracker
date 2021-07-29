@@ -24,7 +24,7 @@ class DB {
         return this.connection.query("INSERT INTO department SET ?" , depart)
     }
     addRole(role){
-        return this.connection.query("INSERT INTO department SET ?" , role)
+        return this.connection.query("INSERT INTO role SET ?" , role)
     }
     addEmployee(){
         return this.connection.query(
